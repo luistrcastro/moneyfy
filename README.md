@@ -1,4 +1,5 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
+[creator](https://github.com/nevadskiy)
 
 # Dockerized template for your next project with Laravel and Nuxt
 
@@ -6,21 +7,21 @@ Well tested on Ubuntu 18.04, 19.10 and 20.04.
 
 ## 🍬 Stack includes
 
-* API
-  * Laravel (latest version)
-  * Octane
-  * PostgreSQL (and separate database for testing)
-  * Redis
-  * MailHog
-* Client
-  * Nuxt 3 (latest version)
-* Gateway
-  * Nginx (as reverse-proxy)
-  * Certbot
+- API
+  - Laravel (latest version)
+  - Octane
+  - PostgreSQL (and separate database for testing)
+  - Redis
+  - MailHog
+- Client
+  - Nuxt 3 (latest version)
+- Gateway
+  - Nginx (as reverse-proxy)
+  - Certbot
 
 ## 📜 Introduction
 
-The project is just separate preconfigured Laravel and Nuxt applications that are stored in the same [monorepo](https://en.wikipedia.org/wiki/Monorepo). 
+The project is just separate preconfigured Laravel and Nuxt applications that are stored in the same [monorepo](https://en.wikipedia.org/wiki/Monorepo).
 
 Each app has its own docker templates for development and production and does not have the actual application code.
 So you can install and run them completely separate from each other.
