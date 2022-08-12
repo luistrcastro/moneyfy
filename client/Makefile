@@ -25,7 +25,7 @@ install: build up
 
 # Start containers
 up:
-	docker-compose -f ${COMPOSE_FILE} up -d
+	docker-compose -f ${COMPOSE_FILE} up
 
 # Stop containers
 down:
@@ -64,7 +64,7 @@ prune:
 
 # Enter the app container
 app.bash:
-	docker-compose -f ${COMPOSE_FILE} exec app /bin/bash
+	docker-compose -f ${COMPOSE_FILE} exec app /bin/sh
 
 # Install yarn dependencies
 yarn.install:

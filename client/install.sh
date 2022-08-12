@@ -6,7 +6,7 @@ install_nuxt() {
   # Init a new Nuxt app into a temporary directory
   docker-compose -f docker-compose.dev.yml run --rm --no-deps \
     --user "$(id -u)":"$(id -g)" app \
-    npx nuxi init ${INSTALL_DIRECTORY}
+    yarn create nuxt-app ${INSTALL_DIRECTORY}
 
   # Set ownership of the temporary directory to the current user
   sudo chown -R "$(id -u)":"$(id -g)" ./${INSTALL_DIRECTORY}
@@ -31,11 +31,6 @@ make build
 
 # Install Nuxt framework
 install_nuxt
-
-# Install packages
-docker-compose -f docker-compose.dev.yml run --rm --no-deps \
-  --user "$(id -u)":"$(id -g)" app \
-  yarn install
 
 # Start containers
 make up
