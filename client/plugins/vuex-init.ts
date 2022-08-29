@@ -7,7 +7,6 @@
 export default function () {
   // Actions that must be 'awaited' as order of processing is relevant
   // ---------------------------------------------------------------
-  // store.dispatch('user/set')
   // Async actions (ie can be dispatched and processed concurrently)
   // ---------------------------------------------------------------
   // store.dispatch('configurations/initialize')

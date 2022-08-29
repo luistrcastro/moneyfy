@@ -1,11 +1,16 @@
-import colors from 'vuetify/es5/util/colors'
+import { light, dark } from './assets/appThemes'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  // ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  // server: {
+  //   port: 3000,
+  //   host: '0.0.0.0', // Ensure not localhost to run from docker container
+  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -21,10 +26,15 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/main.css', '~/assets/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/api/api', mode: 'client' },
+    { src: '~/plugins/axiosError', mode: 'client' },
+    { src: '~/plugins/vee-validate', mode: 'client' },
+    { src: '~/plugins/notifier', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,11 +58,17 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
+    proxy: true,
     credentials: true,
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: '/api',
   },
-
+  proxy: {
+    '/laravel': {
+      target: 'https://laravel-auth.nuxtjs.app',
+      pathRewrite: { '^/laravel': '/' },
+    },
+  },
   auth: {
     /**
      * Specify any Nuxt plugins that depend on the $auth property here
@@ -63,10 +79,12 @@ export default {
     strategies: {
       sanctum: {
         provider: 'laravel/sanctum',
-        url: 'auth',
+        url: process.env.API_URL_BROWSER,
         endpoints: {
+          login: { url: '/auth/login', method: 'post' },
+          logout: { url: '/auth/logout', method: 'post' },
           user: {
-            url: '/user',
+            url: '/api/user',
             method: 'GET',
           },
         },
@@ -88,7 +106,7 @@ export default {
   },
 
   router: {
-    middleware: ['auth'],
+    middleware: ['auth', 'verifiedUser'],
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -97,15 +115,8 @@ export default {
     theme: {
       dark: true,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
+        dark,
+        light,
       },
     },
   },

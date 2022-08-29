@@ -28,7 +28,7 @@ install: build.all up
 
 # Start containers
 up:
-	docker-compose -f ${COMPOSE_FILE} up -d
+	docker-compose -f ${COMPOSE_FILE} up
 
 # Stop containers
 down:

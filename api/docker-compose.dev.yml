@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -99,6 +99,7 @@ services:
       context: ./
       dockerfile: ./.docker/dev/mailhog/Dockerfile
     ports:
+      - "1025:1025"
       - "8025:8025"
     networks:
       - api
