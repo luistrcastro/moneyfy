@@ -45,7 +45,7 @@
               <v-btn color="primary" :disabled="invalid" type="submit">
                 Submit
               </v-btn>
-              <v-btn plain @click="resetPassord">Forgot your password?</v-btn>
+              <ForgotPasswordDialog />
               <RegisterDialog />
             </v-card-actions>
           </form>
@@ -59,11 +59,12 @@
 import { ValidationProvider } from 'vee-validate'
 import RegisterDialog from '~/components/login/RegisterDialog.vue'
 import validation from '~/mixins/validation'
+import ForgotPasswordDialog from '~/components/login/ForgotPasswordDialog.vue'
 
 export default {
   name: 'LoginPage',
   auth: false,
-  components: { RegisterDialog, ValidationProvider },
+  components: { RegisterDialog, ValidationProvider, ForgotPasswordDialog },
   mixins: [validation],
   layout: 'guest',
   data: () => ({
@@ -85,7 +86,7 @@ export default {
         })
         this.$router.push('/')
       } catch (error) {
-        this.$axiosError(error)
+        this.$kdal.error(error)
       }
     },
 

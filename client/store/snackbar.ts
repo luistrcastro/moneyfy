@@ -23,3 +23,4 @@ export const mutations = {
     state.timeout = payload.timeout
   },
 }
+ 

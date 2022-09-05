@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'ErrorLayout',
-  layout: 'error',
+  auth: true,
   props: {
     error: {
       type: Object,

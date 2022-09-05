@@ -23,7 +23,7 @@ export default {
           timeout: 4,
         })
       } catch (error) {
-        this.$axiosError(error)
+        this.$kdal.error(error)
       }
     },
   },

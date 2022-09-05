@@ -68,13 +68,17 @@
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
     <SnackbarNotifier />
+    <KindAlert />
   </v-app>
 </template>
 
 <script>
 import SnackbarNotifier from '~/components/ui/SnackbarNotifier.vue'
+import KindAlert from '~/components/ui/KindAlert.vue'
+
 export default {
   name: 'DefaultLayout',
+  components: { SnackbarNotifier, KindAlert },
   data() {
     return {
       clipped: false,
@@ -103,6 +107,5 @@ export default {
       await this.$auth.logout()
     },
   },
-  components: { SnackbarNotifier },
 }
 </script>

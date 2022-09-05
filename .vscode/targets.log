@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 29 10:41:37 2022
+# Make data base, printed on Mon Sep  5 07:25:04 2022
 
 # Variables
 
@@ -87,7 +89,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/luistrcastro/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:/home/luistrcastro/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/xampp/php:/mnt/c/ProgramData/ComposerSetup/bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/GitHub CLI/:/mnt/c/Windows:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/luist/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/luist/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/JetBrains/PhpStorm 2021.2.1/bin:/mnt/c/Users/luist/AppData/Roaming/Composer/vendor/bin:/mnt/c/Program Files/heroku/bin:/mnt/c/Users/luist/AppData/Roaming/npm:/mnt/d/System/google-cloud-sdk/bin:/snap/bin:/home/luistrcastro/.dotnet/tools
+PATH = /home/luistrcastro/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:/home/luistrcastro/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/xampp/php:/mnt/c/ProgramData/ComposerSetup/bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/GitHub CLI/:/mnt/c/Windows:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/luist/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/luist/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/JetBrains/PhpStorm 2021.2.1/bin:/mnt/c/Users/luist/AppData/Roaming/Composer/vendor/bin:/mnt/c/Program Files/heroku/bin:/mnt/c/Users/luist/AppData/Roaming/npm:/mnt/d/System/google-cloud-sdk/bin:/mnt/c/php8:/snap/bin:/home/luistrcastro/.dotnet/tools
 # default
 MAKEFILES := 
 # automatic
@@ -107,7 +109,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 +F = $(notdir $+)
 # environment
-WSL_INTEROP = /run/WSL/2952_interop
+WSL_INTEROP = /run/WSL/2989_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -123,7 +125,7 @@ MAKE_VERSION := 4.3
 # environment
 _ = /home/luistrcastro/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-43cbf54b-e737-4884-85b7-bc4d3efffdde.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-dc18ff65-0b1e-4a1b-8924-1579d09164f3.sock
 # environment
 NVM_CD_FLAGS = 
 # environment
@@ -211,8 +213,6 @@ GNUmakefile:
 # strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=0/22=0%
-# Finished Make data base on Mon Aug 29 10:41:37 2022
+# Finished Make data base on Mon Sep  5 07:25:04 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

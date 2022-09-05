@@ -142,11 +142,11 @@ export default {
       dialog: false,
       isSaving: false,
       userDetails: {
-        first_name: 'asdf',
+        first_name: '',
         middle_name: '',
-        last_name: 'asdf',
-        email: 'adsfadsf@adsf.com',
-        password: 'adsfasdf',
+        last_name: '',
+        email: '',
+        password: '',
         receives_browser_notifications: true,
         receives_email_notifications: true,
         picture_url: null,
@@ -180,7 +180,7 @@ export default {
         this.dialog = false
       } catch (error) {
         this.isSaving = false
-        this.$axiosError(error)
+        this.$kdal.error(error)
       }
     },
   },

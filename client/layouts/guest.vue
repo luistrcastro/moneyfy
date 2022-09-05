@@ -2,12 +2,18 @@
   <v-app class="guest-page">
     <!-- <img src="/jpeg/bg.guest.jpg" class="guest-page" alt="" /> -->
     <Nuxt />
+    <SnackbarNotifier />
+    <KindAlert />
   </v-app>
 </template>
 
 <script>
+import SnackbarNotifier from '~/components/ui/SnackbarNotifier.vue'
+import KindAlert from '~/components/ui/KindAlert.vue'
+
 export default {
   name: 'GuestLayout',
+  components: { SnackbarNotifier, KindAlert },
 }
 </script>
 
