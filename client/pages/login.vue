@@ -5,8 +5,14 @@
         <validation-observer v-slot="{ invalid }" ref="form">
           <form @submit.prevent="attemptLogin">
             <v-card-title class="text-h5">
-              <v-img contain height="40" max-width="40" src="png/icon.png" />
-              <span> Base App Login </span>
+              <v-img
+                class="mr-2"
+                contain
+                height="35"
+                max-width="35"
+                src="png/CAD-coin.png"
+              />
+              <span> Moneyify </span>
             </v-card-title>
             <v-card-text class="card-content p-6">
               <validation-provider
@@ -42,7 +48,7 @@
               </validation-provider>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="primary" :disabled="invalid" type="submit">
+              <v-btn color="primary-dark" :disabled="invalid" type="submit">
                 Submit
               </v-btn>
               <ForgotPasswordDialog />

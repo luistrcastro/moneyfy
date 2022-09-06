@@ -3,11 +3,14 @@
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
-      :clipped="clipped"
+      clipped
       fixed
       app
     >
       <v-list>
+        <v-btn icon @click.stop="miniVariant = !miniVariant">
+          <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        </v-btn>
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
@@ -22,7 +25,7 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="logout">
+        <v-list-item @click.stop="logout">
           <v-list-item-action>
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
@@ -32,17 +35,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar clipped-left fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn icon @click.stop="toggleTheme">
@@ -54,8 +48,8 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer absolute app inset>
+      <span>&copy; 2022 Luis Felipe Castro</span>
     </v-footer>
     <SnackbarNotifier />
     <KindAlert />
@@ -71,14 +65,12 @@ export default {
   components: { SnackbarNotifier, KindAlert },
   data() {
     return {
-      clipped: false,
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
+          title: 'Categories',
+          to: '/categories',
         },
         {
           icon: 'mdi-chart-bubble',
@@ -87,8 +79,7 @@ export default {
         },
       ],
       miniVariant: false,
-      right: true,
-      title: 'Vuetify.js',
+      title: 'Moneyify',
     }
   },
   methods: {

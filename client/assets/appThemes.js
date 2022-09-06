@@ -4,9 +4,9 @@ export const light = {
   background: '#FFFFFF',
   surface: '#FFFFFF',
 
-  primary: '#1d4355',
-  'primary-light': '#289dd2',
-  'primary-dark': '#122b36',
+  primary: '#fbd87f',
+  'primary-light': '#ffd260',
+  'primary-dark': '#ffc023',
 
   secondary: '#41c1ba',
   'secondary-light': '#78e9e3',
