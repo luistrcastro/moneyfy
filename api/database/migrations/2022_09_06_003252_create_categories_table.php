@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('icon', 25);
             $table->string('description', 255)->nullable()->default(null);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

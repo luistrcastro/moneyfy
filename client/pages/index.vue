@@ -4,6 +4,8 @@
     <v-btn @click="fetch">fetch </v-btn>
     <v-btn @click="create">create </v-btn>
     <v-btn @click="update">update </v-btn>
+    <v-btn @click="deleteItem">delete </v-btn>
+    <v-btn @click="restore">restore </v-btn>
   </div>
 </template>
 
@@ -14,7 +16,9 @@ export default {
     return{
       obj: null,
       data: null,
+      allData: [],
       newObj: null,
+      restoredObj: null,
     }
   },
 
@@ -22,17 +26,16 @@ export default {
     const response = await this.$api('categories').index()
     this.data = response.data;
     const response2 = await this.$api('base_categories').index()
-    console.log(response2)
+    this.allData = response2.data;
   },
 
   methods:{
     async fetch(){
-      const response = await this.$api('categories').show(1479262290);
+      const response = await this.$api('categories').show(925830557);
       this.obj = response.data;
     },
     async create(){
       const response = await this.$api('categories').post({
-        // user_id: 713293223,
         name: 'New Category',
         slug: 'new_category',
         color: 'black',
@@ -41,13 +44,23 @@ export default {
       });
       this.newObj = response.data;
     },
-    async delete(){
-      const response = await this.$api('categories').delete(1139950057);
+    async deleteItem(){
+      const response = await this.$api('categories').delete(925830557);
       this.newObj = response.data;
     },
     async update(){
-      const response = await this.$api('categories').update(1139950057, {});
+      const response = await this.$api('categories').update(925830557, {
+        name: 'Old Category',
+        slug: 'old_category',
+        color: 'black',
+        icon: 'check',
+        description: 'something',
+      });
       this.newObj = response.data;
+    },
+    async restore(){
+      const response = await this.$api('categories/restore/925830557').post();
+      this.restoredObj = response.data;
     }
   }
 }
