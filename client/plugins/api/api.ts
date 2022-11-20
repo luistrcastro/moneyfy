@@ -5,7 +5,7 @@ export default (context: INuxtContext, inject: any) => {
   /**
    * Inject API repositories into the application
    *
-   * @example this.$api('users').create(UserObject)
+   * @example this.$api('users').post(UserObject)
    *
    * Please Note:
    * The 'users' in the above example is referencing a url

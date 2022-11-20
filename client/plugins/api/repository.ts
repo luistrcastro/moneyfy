@@ -10,22 +10,22 @@ import { IApi, IHttpClient } from '~/contracts/common/Http'
 export default ($axios: IHttpClient) =>
   (url: string): IApi => ({
     index(options: object = {}) {
-      return $axios.$get(`/${url}`, { params: options })
+      return $axios.$get(`api/${url}`, { params: options })
     },
 
-    create(payload: object, args: object = {}) {
-      return $axios.$post(`/${url}`, payload, args)
+    post(payload: object, args: object = {}) {
+      return $axios.$post(`api/${url}`, payload, args)
     },
 
     show(id: number) {
-      return $axios.$get(`/${url}/${id}`, {})
+      return $axios.$get(`api/${url}/${id}`, {})
     },
 
-    update(payload: object, id: number) {
-      return $axios.$put(`/${url}/${id}`, payload)
+    update(id: number, payload: object) {
+      return $axios.$put(`api/${url}/${id}`, payload)
     },
 
     delete(id: number) {
-      return $axios.$delete(`/${url}/${id}`)
+      return $axios.$delete(`api/${url}/${id}`)
     },
   })

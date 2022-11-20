@@ -14,8 +14,8 @@ export interface IHttpClient {
  */
 export interface IApi {
   index: (options: object) => object
-  create: (payload: object) => object
+  post: (payload: object) => object
   show: (id: number) => object
-  update: (payload: object, id: number) => object
+  update: (id: number, payload: object) => object
   delete: (id: number) => object
 }

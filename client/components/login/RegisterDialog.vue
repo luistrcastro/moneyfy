@@ -159,8 +159,8 @@ export default {
     async attemptRegistering() {
       try {
         this.isSaving = true
-        await this.$api('sanctum/csrf-cookie').index()
-        await this.$api('auth/register').create({
+        await this.$axios.$get('sanctum/csrf-cookie')
+        await this.$axios.$post('auth/register', {
           ...this.userDetails,
           full_name:
             this.userDetails.first_name + ' ' + this.userDetails.last_name,
@@ -173,7 +173,7 @@ export default {
           },
         })
 
-        await this.$api('auth/email/verification-notification').create()
+        await this.$axios.$post('auth/email/verification-notification')
 
         this.$router.push('/')
         this.isSaving = false
