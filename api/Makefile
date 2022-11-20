@@ -28,6 +28,10 @@ install: build.all up
 
 # Start containers
 up:
+	docker-compose -f ${COMPOSE_FILE} up -d
+
+# Start containers without detaching
+up.watch:
 	docker-compose -f ${COMPOSE_FILE} up
 
 # Stop containers

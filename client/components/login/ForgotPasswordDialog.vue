@@ -64,8 +64,8 @@ export default {
   methods: {
     async attemptResetPassword() {
       try {
-        await this.$api('sanctum/csrf-cookie').index()
-        await this.$api('auth/forgot-password').create({
+        await this.$axios.$get('sanctum/csrf-cookie')
+        await this.$axios.$post('auth/forgot-password',{
           email: this.email,
         })
         this.$notifier.showMessage({ content: 'Email sent successfuly' })

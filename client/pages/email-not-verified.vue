@@ -16,7 +16,7 @@ export default {
   methods: {
     async sendEmail() {
       try {
-        await this.$api('auth/email/verification-notification').create()
+        await this.$axios.$post('auth/email/verification-notification')
         this.$notifier.showMessage({
           content: `Verification email sent to ${this.$store.state.auth.user.email}`,
           position: 'left',

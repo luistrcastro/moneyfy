@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CategoryAPIController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+//    return $request->user();;
+//});
+Route::middleware(['auth:sanctum'])->get('user', [LoginController::class, 'me'])->name('me');
+
+Route::apiResource('categories', CategoryAPIController::class);
+Route::get('base_categories', [CategoryAPIController::class, 'baseCategories']);

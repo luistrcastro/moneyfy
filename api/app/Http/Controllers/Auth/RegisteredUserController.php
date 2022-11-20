@@ -29,8 +29,8 @@ class RegisteredUserController extends Controller
             'full_name' => ['required', 'string', 'max:255'],
             'picture_url' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'receives_browser_notifications' => ['nullable', 'boolean'],
-            'receives_email_notifications' => ['nullable', 'boolean'],
+            'receives_browser_notifications' => ['boolean'],
+            'receives_email_notifications' => ['boolean'],
             'password' => ['required', Rules\Password::defaults()],
         ]);
 
@@ -38,14 +38,13 @@ class RegisteredUserController extends Controller
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,
-            'full_name' => $request->full_name,
+            'full_name' => $request->full_name ?? $request->first_name . ' ' . $request->last_name,
             'picture_url' => $request->picture_url ?? null,
             'email' => $request->email,
             'receives_browser_notifications' => $request->receives_browser_notifications,
             'receives_email_notifications' => $request->receives_email_notifications,
             'password' => Hash::make($request->password),
         ]);
-        dump($user);
 
         event(new Registered($user));
 

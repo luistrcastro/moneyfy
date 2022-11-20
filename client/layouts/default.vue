@@ -79,7 +79,7 @@ export default {
         },
       ],
       miniVariant: false,
-      title: 'Moneyify',
+      title: 'Moneyfy',
     }
   },
   methods: {

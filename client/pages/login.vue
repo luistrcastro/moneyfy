@@ -12,7 +12,7 @@
                 max-width="35"
                 src="png/CAD-coin.png"
               />
-              <span> Moneyify </span>
+              <span> Moneyfy </span>
             </v-card-title>
             <v-card-text class="card-content p-6">
               <validation-provider
@@ -90,7 +90,7 @@ export default {
         await this.$auth.loginWith('sanctum', {
           data: this.guest,
         })
-        this.$router.push('/')
+        await this.$router.push('/')
       } catch (error) {
         this.$kdal.error(error)
       }
