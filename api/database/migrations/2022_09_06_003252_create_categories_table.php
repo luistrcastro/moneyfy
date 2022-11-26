@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -11,12 +12,12 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('parent_category_id')->nullable()->default(null);
-            $table->foreignIdFor(\App\Models\User::class)->nullable()->default(null);
+            $table->foreignIdFor(User::class)->nullable()->default(null)->index();
             $table->string('name', 25);
             $table->string('slug', 25);
             $table->string('color', 25);
@@ -32,7 +33,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('categories');
     }
