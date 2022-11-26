@@ -26,7 +26,7 @@ class CategoryAPIController extends ApiBaseController
      */
     public function index(): JsonResponse
     {
-        $result = Category::all();
+        $result = Category::withTrashed()->get();
 
         return $this->sendSuccess($result->toArray(), 'Categories retrieved successfully');
     }
@@ -34,7 +34,7 @@ class CategoryAPIController extends ApiBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param StoreCategoryRequest $request
      * @return JsonResponse
      */
     public function store(StoreCategoryRequest $request): JsonResponse
@@ -47,7 +47,7 @@ class CategoryAPIController extends ApiBaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param int $id
      * @return JsonResponse
      */
     public function show(int $id): JsonResponse
@@ -60,8 +60,8 @@ class CategoryAPIController extends ApiBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param int $id
+     * @param UpdateCategoryRequest $request
      * @return JsonResponse
      */
     public function update(int $id, UpdateCategoryRequest $request): JsonResponse
@@ -74,13 +74,13 @@ class CategoryAPIController extends ApiBaseController
         }
 
         $category->fill($input)->save();
-        return $this->sendSuccess($input, 'New category created successfully');
+        return $this->sendSuccess($input, 'Category updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param int $id
      * @return JsonResponse
      */
     public function destroy(int $id): JsonResponse
@@ -91,7 +91,24 @@ class CategoryAPIController extends ApiBaseController
         }
 
         $category->delete();
-        return $this->sendSuccess([], 'New category created successfully');
+        return $this->sendSuccess([], 'Category deleted successfully');
+    }
+
+    /**
+     * Restores deleted categories
+     * POST
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function restore(int $id): JsonResponse
+    {
+        $category = Category::withTrashed()->find($this->model->decodeHash($id));
+        if (empty($category)){
+            return $this->sendError('Category not found');
+        }
+
+        $category->restore();
+        return $this->sendSuccess($category, 'Category restored successfully');
     }
 
     /**
