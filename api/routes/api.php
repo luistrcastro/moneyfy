@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('user', [LoginController::class, 'me'])->name('me');
 
 Route::apiResource('categories', CategoryAPIController::class);
+Route::post('categories/restore/{categoryId}', [CategoryAPIController::class, 'restore']);
 Route::get('base_categories', [CategoryAPIController::class, 'baseCategories']);
 
 Route::apiResource('transactions', TransactionAPIController::class);

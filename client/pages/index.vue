@@ -5,6 +5,7 @@
     <v-btn @click="create">create </v-btn>
     <v-btn @click="update">update </v-btn>
     <v-btn @click="deleteItem">delete </v-btn>
+    <v-btn @click="restore">restore </v-btn>
   </div>
 </template>
 
@@ -15,15 +16,15 @@ export default {
     return{
       obj: null,
       data: null,
+      allData: [],
       newObj: null,
+      restoredObj: null,
     }
   },
 
   async mounted(){
     const response = await this.$api('transactions').index()
     this.data = response.data;
-    // const response2 = await this.$api('base_categories').index()
-    // console.log(response2)
   },
 
   methods:{
@@ -65,6 +66,10 @@ export default {
         label: 'New Label',
       });
       this.newObj = response.data;
+    },
+    async restore(){
+      const response = await this.$api('categories/restore/925830557').post();
+      this.restoredObj = response.data;
     }
   }
 }

@@ -8,12 +8,14 @@ use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class Category extends Model
 {
     use HasFactory;
     use HashedId;
+    use SoftDeletes;
 
     public $table = 'categories';
 
