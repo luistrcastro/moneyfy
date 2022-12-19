@@ -38,13 +38,15 @@ return [
     */
 
     'connections' => [
-
-        'main' => ['prime'=> '60799931', 'inverse'=> '1572983155', 'random'=> '689718812'],
+        'main' => ['prime'=> env('HASH_MAIN'), 'inverse'=> env('HASH_MAIN_INVERSE'), 'random'=> env('HASH_MAIN_RANDOM')],
 
         'alternative' => ['prime' => '1805598649', 'inverse'=> '1060443785', 'random' => '1884825897'],
 
-        'Category' => ['prime' => '1358707279', 'inverse' => '1748278447', 'random' => '682116221'],
+        'Category' => ['prime' => env('HASH_CATEGORY'), 'inverse' => env('HASH_CATEGORY_INVERSE'), 'random' => env('HASH_CATEGORY_RANDOM')],
 
+        'Transaction' => ['prime' => env('HASH_TRANSACTION'), 'inverse' => env('HASH_TRANSACTION_INVERSE'), 'random' => env('HASH_TRANSACTION_RANDOM')],
+
+        'User' => ['prime' => env('HASH_USER'), 'inverse' => env('HASH_USER_INVERSE'), 'random' => env('HASH_USER_RANDOM')],
     ],
 
 ];

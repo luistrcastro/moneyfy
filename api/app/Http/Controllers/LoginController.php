@@ -15,7 +15,7 @@ class LoginController extends ApiBaseController
 
     public function me(Request $request) {
         $user = $request->user();
-        $user->id = HashableService::getHash(Auth::user()->getKey(), 'main');
+        $user->id = HashableService::getHash(Auth::user()->getKey(), 'User');
         return $user;
     }
 }

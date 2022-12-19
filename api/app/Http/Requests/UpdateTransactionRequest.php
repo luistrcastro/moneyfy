@@ -22,7 +22,7 @@ class UpdateTransactionRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return Transaction::$updateRules;
     }

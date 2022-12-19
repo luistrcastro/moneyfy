@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Scopes\AuthUserScope;
+use App\Services\HashableService;
 use App\Traits\HashedId;
-use Database\Factories\CategoryFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,6 +39,8 @@ class Transaction extends Model
         'description',
         'amount',
         'date',
+        'is_computed',
+        'duplication_checked',
         'system_generated'
     ];
 
@@ -54,13 +57,10 @@ class Transaction extends Model
         'description' => 'string',
         'amount' => 'decimal:2',
         'date' => 'date:Y-m-d',
+        'is_computed' => 'boolean',
+        'duplication_checked' => 'boolean',
         'system_generated' => 'boolean',
     ];
-
-    protected static function newFactory(): CategoryFactory
-    {
-        return CategoryFactory::new();
-    }
 
     /**
      * Validation rules.
@@ -69,20 +69,24 @@ class Transaction extends Model
      */
     public static array $createRules = [
         'parent_transaction_id' => 'nullable|integer',
-        'category_id' => 'required|integer',
+        'category_id' => 'nullable|integer',
         'label' => 'required|string|max:20',
-        'description' => 'required|string|max:255',
-        'amount' => 'required|decimal:2',
+        'description' => 'string|max:255',
+        'amount' => 'required|numeric',
         'date' => 'required|date',
+        'is_computed' => 'boolean',
+        'duplication_checked' => 'boolean',
         'system_generated' => 'boolean'
     ];
 
     public static array $updateRules = [
-        'category_id' => 'required|integer',
+        'category_id' => 'nullable|integer',
         'label' => 'required|string|max:20',
-        'description' => 'required|string|max:255',
-        'amount' => 'required|decimal:2',
+        'description' => 'string|max:255',
+        'amount' => 'required|numeric',
         'date' => 'required|date',
+        'is_computed' => 'boolean',
+        'duplication_checked' => 'boolean',
     ];
 
     /**---------------------
@@ -104,5 +108,30 @@ class Transaction extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    /**---------------------
+     * - Accessors and Mutators:
+     * ---------------------**/
+
+    public function userId(): Attribute
+    {
+        return Attribute::get(fn($value)=> HashableService::getHash($value, 'User'));
+    }
+
+    public function categoryId(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => HashableService::getHash($value, 'Category'),
+            set: fn ($value) => HashableService::decodeHash($value, 'Category'),
+        );
+    }
+
+    public function parentCategoryId(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => HashableService::getHash($value, 'Category'),
+            set: fn ($value) => HashableService::decodeHash($value, 'Category'),
+        );
     }
 }

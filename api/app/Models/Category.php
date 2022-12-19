@@ -58,11 +58,6 @@ class Category extends Model
         'description' => 'string'
     ];
 
-    protected static function newFactory(): CategoryFactory
-    {
-        return CategoryFactory::new();
-    }
-
     /**
      * Validation rules.
      *
