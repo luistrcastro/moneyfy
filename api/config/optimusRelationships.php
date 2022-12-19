@@ -2,7 +2,9 @@
 
 return [
     'hashMap' => [
+        'User' => 'User',
         'Category' => 'Category',
+        'Transaction' => 'Transaction',
     ],
-    'isEnabled' => env('HASHPRIMARYKEYS', true),
+    'isEnabled' => env('HASH_PRIMARY_KEYS', true),
 ];

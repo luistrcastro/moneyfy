@@ -17,6 +17,16 @@ class StringHelper
     }
 
     /**
+     * Changes snake_case into PascalCase
+     * @param string $str
+     * @return string
+     */
+    private function snakeToPascal(string $str): string
+    {
+        return str_replace('_', '', ucwords($str, '_'));
+    }
+
+    /**
      * Changes string with spaces into snake_case
      * @param string $str
      * @return string

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryAPIController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TransactionAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,6 @@ Route::middleware(['auth:sanctum'])->get('user', [LoginController::class, 'me'])
 Route::apiResource('categories', CategoryAPIController::class);
 Route::post('categories/restore/{categoryId}', [CategoryAPIController::class, 'restore']);
 Route::get('base_categories', [CategoryAPIController::class, 'baseCategories']);
+
+Route::apiResource('transactions', TransactionAPIController::class);
+Route::post('transactions/per_period', [TransactionAPIController::class, 'perPeriod']);
