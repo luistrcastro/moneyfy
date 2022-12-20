@@ -12,25 +12,26 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        \App\Models\User::factory()->create([
-            'first_name' => 'Luis',
-            'email' => 'luistrcastro@hotmail.com',
-            'last_name' => 'Castro',
-            'full_name' => 'Luis Castro',
-            'receives_browser_notifications' => true,
-            'receives_email_notifications' => true,
-            'password' => \Illuminate\Support\Facades\Hash::make('12345678'),
-            'created_at' => '2022-08-28 14:18:26',
-            'email_verified_at' => '2022-09-05 16:03:02',
-        ]);
+//        \App\Models\User::factory()->create([
+//            'first_name' => 'Luis',
+//            'email' => 'luistrcastro@hotmail.com',
+//            'last_name' => 'Castro',
+//            'full_name' => 'Luis Castro',
+//            'receives_browser_notifications' => true,
+//            'receives_email_notifications' => true,
+//            'password' => \Illuminate\Support\Facades\Hash::make('12345678'),
+//            'created_at' => '2022-08-28 14:18:26',
+//            'email_verified_at' => '2022-09-05 16:03:02',
+//        ]);
 
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            CategorySeeder::class,
-            TransactionSeeder::class,
+//            CategorySeeder::class,
+//            TransactionSeeder::class,
+            AccountSeeder::class,
         ]);
     }
 }

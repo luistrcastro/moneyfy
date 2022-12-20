@@ -42,6 +42,8 @@ return [
 
         'alternative' => ['prime' => '1805598649', 'inverse'=> '1060443785', 'random' => '1884825897'],
 
+        'Account' => ['prime' => env('HASH_ACCOUNT'), 'inverse' => env('HASH_ACCOUNT_INVERSE'), 'random' => env('HASH_ACCOUNT_RANDOM')],
+
         'Category' => ['prime' => env('HASH_CATEGORY'), 'inverse' => env('HASH_CATEGORY_INVERSE'), 'random' => env('HASH_CATEGORY_RANDOM')],
 
         'Transaction' => ['prime' => env('HASH_TRANSACTION'), 'inverse' => env('HASH_TRANSACTION_INVERSE'), 'random' => env('HASH_TRANSACTION_RANDOM')],

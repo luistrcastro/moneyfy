@@ -23,29 +23,38 @@ export default {
   },
 
   async mounted(){
-    const response = await this.$api('transactions').index()
+    const response = await this.$api('accounts').index()
     this.data = response.data;
   },
 
   methods:{
     async fetch(){
-      const response = await this.$api('transactions').show(this.data[0].id);
+      const response = await this.$api('accounts').show(this.data[0].id);
       this.obj = response.data;
     },
     async create(){
-      const response = await this.$api('transactions').post({
-        amount: 119.74,
-        category_id:376385244,
-        date:"2022-12-04",
+      const response = await this.$api('accounts').post({
         description:"cupiditate cum consequuntur dolor sit molestiae",
-        duplication_checked:false,
-        is_computed:true,
+        institution:"scotia",
         label:"repellat",
-        parent_transaction_id:null,
-        system_generated:false,
+        last_four: 1234,
       });
       this.newObj = response.data;
     },
+    // async create(){
+    //   const response = await this.$api('transactions').post({
+    //     amount: 119.74,
+    //     category_id:376385244,
+    //     date:"2022-12-04",
+    //     description:"cupiditate cum consequuntur dolor sit molestiae",
+    //     duplication_checked:false,
+    //     is_computed:true,
+    //     label:"repellat",
+    //     parent_transaction_id:null,
+    //     system_generated:false,
+    //   });
+    //   this.newObj = response.data;
+    // },
     // async create(){
     //   const response = await this.$api('categories').post({
     //     name: 'New Category',
@@ -57,11 +66,11 @@ export default {
     //   this.newObj = response.data;
     // },
     async deleteItem(){
-      const response = await this.$api('transactions').delete(this.data[0].id);
+      const response = await this.$api('accounts').delete(this.data[0].id);
       this.newObj = response.data;
     },
     async update(){
-      const response = await this.$api('transactions').update(this.data[0].id, {
+      const response = await this.$api('accounts').update(this.data[0].id, {
         ...this.data[0],
         label: 'New Label',
       });
