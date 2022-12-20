@@ -26,5 +26,5 @@ class StoreAccountRequest extends FormRequest
     {
         return Account::$createRules;
     }
-    
+
 }

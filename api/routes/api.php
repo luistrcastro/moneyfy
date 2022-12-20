@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountAPIController;
 use App\Http\Controllers\CategoryAPIController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionAPIController;
@@ -27,3 +28,5 @@ Route::get('base_categories', [CategoryAPIController::class, 'baseCategories']);
 
 Route::apiResource('transactions', TransactionAPIController::class);
 Route::post('transactions/per_period', [TransactionAPIController::class, 'perPeriod']);
+
+Route::apiResource('accounts', AccountAPIController::class);
