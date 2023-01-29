@@ -5,6 +5,10 @@ ARG IMAGE_TAG=latest
 # Image
 FROM ${IMAGE_REGISTRY}/api-base:${IMAGE_TAG}
 
+# ------------------- SWITCH TO NON-ROOT USER ------------
+USER $user
+# --------------------------------------------------------
+
 # Update dependencies
 RUN apt-get update \
 # Install Swoole (required by Octane)

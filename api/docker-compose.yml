@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: ./.docker/prod/app/Dockerfile
+      dockerfile: ./.docker/${IMAGE_REGISTRY}/app/Dockerfile
       args:
         IMAGE_REGISTRY: ${IMAGE_REGISTRY}
         IMAGE_TAG: ${IMAGE_TAG}
